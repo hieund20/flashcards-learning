@@ -1,0 +1,97 @@
+:root {
+  /* Primary */
+  --color-primary: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1d4ed8;
+
+  /* Background */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  /* Text */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+
+  /* Border */
+  --color-border: #e2e8f0;
+
+  /* Success / Error */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.14);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Transition */
+  --transition-fast: 0.35s ease;
+  --transition-normal: 0.35s ease;
+
+  /* Font */
+  --font-family: Inter, Roboto, Arial, sans-serif;
+
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 2rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Badge */
+  --badge-background: #e0f2fe;
+  --badge-text: #0369a1;
+
+  --color-surface: #ffffff;
+  --color-surface-2: #f8fafc;
+}
+
+[data-theme="dark"] {
+  /* Primary */
+
+  --color-primary: #60a5fa;
+
+  --color-primary-light: #93c5fd;
+
+  --color-primary-dark: #2563eb;
+
+  /* Background */
+
+  --color-background: #0f172a;
+
+  --color-surface: #1e293b;
+  --color-surface-2: #263449;
+
+  /* Text */
+
+  --color-text-primary: #f8fafc;
+
+  --color-text-secondary: #cbd5e1;
+
+  /* Border */
+
+  --color-border: #334155;
+
+  /* Shadow */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
+
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.55);
+
+  /* Badge */
+  --badge-background: #1e3a5f;
+  --badge-text: #93c5fd;
+}

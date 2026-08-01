@@ -1,0 +1,27 @@
+<mat-toolbar class="app-toolbar">
+  <div class="toolbar-title">
+    <mat-icon>menu_book</mat-icon>
+
+    <span>English Flashcards</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="toolbar-actions">
+    <button mat-icon-button matTooltip="Favorites">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+      @if (themeService.currentTheme() === "light") {
+        <mat-icon>dark_mode</mat-icon>
+      } @else {
+        <mat-icon>light_mode</mat-icon>
+      }
+    </button>
+
+    <button mat-icon-button matTooltip="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
