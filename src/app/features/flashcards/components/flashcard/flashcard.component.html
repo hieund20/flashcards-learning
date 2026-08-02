@@ -2,7 +2,13 @@
   <div class="card-header">
     <div class="word">
       <mat-icon>menu_book</mat-icon>
-      <h2>{{ card().word }}</h2>
+      <div class="word-info">
+        <h2>{{ card().word }}</h2>
+
+        <div class="word-type">
+          {{ card().type }}
+        </div>
+      </div>
     </div>
 
     <button

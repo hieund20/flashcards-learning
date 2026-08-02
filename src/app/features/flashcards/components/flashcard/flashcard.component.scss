@@ -147,3 +147,20 @@
 .card-back {
   transform: rotateY(180deg);
 }
+
+.word-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.word-type {
+  margin-top: 4px;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--badge-background);
+  color: var(--badge-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+}

@@ -38,9 +38,11 @@ export class FlashCardRepository {
 
           example: row.c[2]?.v ?? '',
 
-          level: row.c[3]?.v ?? '',
+          type: row.c[3]?.v ?? '',
 
-          category: row.c[4]?.v ?? '',
+          level: row.c[4]?.v ?? '',
+
+          category: row.c[5]?.v ?? '',
         }),
       );
   }
