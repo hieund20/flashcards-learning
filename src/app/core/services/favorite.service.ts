@@ -1,10 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
-  readonly favoriteIds = signal<Set<string>>(new Set());
+  private readonly favoriteIds = signal<Set<string>>(new Set());
+  readonly favorites = this.favoriteIds.asReadonly();
+  readonly favoriteCount = computed(() => this.favoriteIds().size);
   private readonly STORAGE_KEY = 'favorite-ids';
 
   constructor() {
@@ -49,5 +51,17 @@ export class FavoriteService {
     } catch (error) {
       console.error('Failed to load favorites.', error);
     }
+  }
+
+  clear(): void {
+    this.favoriteIds.set(new Set());
+    this.save();
+  }
+
+  remove(id: string): void {
+    const favorites = new Set(this.favoriteIds());
+    favorites.delete(id);
+    this.favoriteIds.set(favorites);
+    this.save();
   }
 }

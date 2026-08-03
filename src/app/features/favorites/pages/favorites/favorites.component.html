@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="container">
+    <h1>Favorite Words</h1>
+
+    @if (favoriteCards$ | async; as cards) {
+      @if (cards.length > 0) {
+        @for (card of cards; track card.id) {
+          <mat-card class="favorite-card">
+            <div class="card-header">
+              <mat-icon>menu_book</mat-icon>
+
+              <h2>{{ card.word }}</h2>
+            </div>
+
+            <p class="type">
+              {{ card.type }}
+            </p>
+
+            <div class="card-footer">
+              <span class="level">
+                {{ card.level }}
+              </span>
+
+              <span class="category">
+                {{ card.category }}
+              </span>
+            </div>
+          </mat-card>
+        }
+      } @else {
+        <div class="empty-state">
+          <mat-icon>favorite_border</mat-icon>
+
+          <h2>No favorite words yet</h2>
+
+          <p>Tap the heart on a flashcard to save it.</p>
+        </div>
+      }
+    }
+  </div>
+</div>

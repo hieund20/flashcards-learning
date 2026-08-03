@@ -1,14 +1,19 @@
 <mat-toolbar class="app-toolbar">
-  <div class="toolbar-title">
+  <a class="toolbar-title" routerLink="/">
     <mat-icon>menu_book</mat-icon>
 
     <span>English Flashcards</span>
-  </div>
+  </a>
 
   <span class="spacer"></span>
 
   <div class="toolbar-actions">
-    <button mat-icon-button matTooltip="Favorites">
+    <button
+      mat-icon-button
+      matTooltip="Favorite Words"
+      routerLink="/favorites"
+      routerLinkActive="active"
+    >
       <mat-icon>favorite</mat-icon>
     </button>
 

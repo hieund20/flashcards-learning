@@ -18,8 +18,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: var(--font-lg);
+  font-size: 1.1rem;
   font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.toolbar-title:hover {
+  color: var(--color-primary);
 }
 
 .toolbar-title mat-icon {
@@ -46,6 +53,10 @@
 }
 
 .app-toolbar button.active {
+  color: var(--color-primary);
+}
+
+.toolbar-actions .active {
   color: var(--color-primary);
 }
 

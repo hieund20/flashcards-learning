@@ -1,17 +1,15 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FlashCard } from '../../../../core/models/flash-card';
+import { FavoriteService } from '../../../../core/services/favorite.service';
 import { FlashCardService } from '../../../../core/services/flash-card.service';
 import { FlashcardComponent } from '../../components/flashcard/flashcard.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-import { FavoriteService } from '../../../../core/services/favorite.service';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
   imports: [
-    ToolbarComponent,
     SearchBarComponent,
     FlashcardComponent,
     MatIconModule,
