@@ -1,3 +1,91 @@
-<h1>Quiz Mode</h1>
+<div class="page">
+  <div class="container">
+    <h1>Quiz Mode</h1>
 
-<p>Coming soon...</p>
+    <div class="quiz-progress">
+      <span> Question {{ currentQuestionNumber }} / {{ totalQuestions }} </span>
+    </div>
+
+    <div class="quiz-score">
+      <div class="summary-item">
+        <mat-icon class="correct-icon">check_circle</mat-icon>
+
+        <span class="label">Correct</span>
+
+        <strong>{{ correctAnswers }}</strong>
+      </div>
+
+      <div class="summary-item">
+        <mat-icon class="wrong-icon">cancel</mat-icon>
+
+        <span class="label">Wrong</span>
+
+        <strong>{{ wrongAnswers }}</strong>
+      </div>
+    </div>
+
+    @if (!quizCompleted) {
+      @if (question; as question) {
+        <p class="subtitle">What is the meaning of</p>
+
+        <h2 class="word">
+          {{ question.question.word }}
+        </h2>
+
+        <div class="answers">
+          @for (option of question.options; track option.card.id) {
+            <button
+              mat-stroked-button
+              (click)="selectAnswer(option)"
+              [disabled]="answered"
+              [class.correct]="answered && option.isCorrect"
+              [class.incorrect]="
+                answered && selectedOption === option && !option.isCorrect
+              "
+            >
+              {{ option.card.meaning }}
+            </button>
+          }
+        </div>
+
+        @if (answered) {
+          <button mat-stroked-button color="primary" (click)="nextQuestion()">
+            Next Question
+          </button>
+        }
+      }
+    } @else {
+      <div class="result-card">
+        <h1>Quiz Completed</h1>
+
+        <div class="score">{{ score }}%</div>
+
+        <div class="summary">
+          <div class="summary-item">
+            <mat-icon class="correct-icon">check_circle</mat-icon>
+            <span>Correct</span>
+            <strong>{{ correctAnswers }}</strong>
+          </div>
+
+          <div class="summary-item">
+            <mat-icon class="wrong-icon">cancel</mat-icon>
+            <span>Wrong</span>
+            <strong>{{ wrongAnswers }}</strong>
+          </div>
+        </div>
+
+        <h2>
+          {{ performanceMessage }}
+        </h2>
+
+        <div class="actions">
+          <button mat-stroked-button color="primary" (click)="restartQuiz()">
+            Try Again
+          </button>
+
+          <button mat-stroked-button routerLink="/">Back to Home</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

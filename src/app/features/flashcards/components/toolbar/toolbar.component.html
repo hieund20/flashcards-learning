@@ -17,6 +17,15 @@
       <mat-icon>favorite</mat-icon>
     </button>
 
+    <button
+      mat-icon-button
+      routerLink="/quiz"
+      routerLinkActive="active"
+      matTooltip="Quiz"
+    >
+      <mat-icon>quiz</mat-icon>
+    </button>
+
     <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
       @if (themeService.currentTheme() === "light") {
         <mat-icon>dark_mode</mat-icon>
