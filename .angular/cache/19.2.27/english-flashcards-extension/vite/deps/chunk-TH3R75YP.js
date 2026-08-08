@@ -2,12 +2,14 @@ import {
   BidiModule
 } from "./chunk-2G2IOVHZ.js";
 import {
-  Platform,
   _CdkPrivateStyleLoader,
-  _bindEventWithOptions,
+  _bindEventWithOptions
+} from "./chunk-36XRREHI.js";
+import {
+  Platform,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-45LYIRFZ.js";
+} from "./chunk-PMKQ523N.js";
 import {
   DOCUMENT
 } from "./chunk-GVSKDZNY.js";
@@ -372,6 +374,26 @@ var _IdGenerator = class __IdGenerator {
   }], null, null);
 })();
 
+// node_modules/@angular/cdk/fesm2022/keycodes-CpHkExLC.mjs
+var SHIFT = 16;
+var CONTROL = 17;
+var ALT = 18;
+var ESCAPE = 27;
+var ZERO = 48;
+var NINE = 57;
+var A = 65;
+var Z = 90;
+var META = 91;
+var MAC_META = 224;
+
+// node_modules/@angular/cdk/fesm2022/keycodes.mjs
+function hasModifierKey(event, ...modifiers) {
+  if (modifiers.length) {
+    return modifiers.some((modifier) => event[modifier]);
+  }
+  return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
+}
+
 // node_modules/@angular/cdk/fesm2022/fake-event-detection-DWOdFTFz.mjs
 function isFakeMousedownFromScreenReader(event) {
   return event.buttons === 0 || event.detail === 0;
@@ -380,17 +402,6 @@ function isFakeTouchstartFromScreenReader(event) {
   const touch = event.touches && event.touches[0] || event.changedTouches && event.changedTouches[0];
   return !!touch && touch.identifier === -1 && (touch.radiusX == null || touch.radiusX === 1) && (touch.radiusY == null || touch.radiusY === 1);
 }
-
-// node_modules/@angular/cdk/fesm2022/keycodes-CpHkExLC.mjs
-var SHIFT = 16;
-var CONTROL = 17;
-var ALT = 18;
-var ZERO = 48;
-var NINE = 57;
-var A = 65;
-var Z = 90;
-var META = 91;
-var MAC_META = 224;
 
 // node_modules/@angular/cdk/fesm2022/shadow-dom-B0oHn41l.mjs
 var shadowDomIsSupported;
@@ -2736,11 +2747,16 @@ var MatCommonModule = class _MatCommonModule {
 export {
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
+  ESCAPE,
   _getEventTarget,
   normalizePassiveListenerOptions,
   FocusMonitor,
+  coerceArray,
   ObserversModule,
+  A11yModule,
   _IdGenerator,
+  hasModifierKey,
+  AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-4XTK2W7Z.js.map
+//# sourceMappingURL=chunk-TH3R75YP.js.map

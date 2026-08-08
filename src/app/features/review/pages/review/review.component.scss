@@ -1,0 +1,79 @@
+.page {
+  padding: 32px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.details {
+  margin: 24px 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-row span {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.details strong {
+  color: var(--color-primary);
+}
+
+.review-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.review-actions button {
+  flex: 1;
+  height: 44px;
+}
+
+.review-progress {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.review-card {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: 32px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.review-card h2 {
+  color: var(--color-text-primary);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.remember-btn {
+  background: var(--color-primary) !important;
+  color: white !important;
+}
+
+.remember-btn:hover {
+  opacity: 0.9;
+}

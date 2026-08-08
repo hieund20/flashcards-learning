@@ -1,0 +1,70 @@
+<div class="page">
+  <div class="container">
+    <h1>Review Mode</h1>
+
+    @if (currentCard) {
+      <div class="review-progress">
+        <span> Card {{ currentCardNumber }} / {{ totalCards }} </span>
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="(currentCardNumber / totalCards) * 100"
+      >
+      </mat-progress-bar>
+      <mat-card class="review-card">
+        <h2>{{ currentCard.word }}</h2>
+
+        @if (!revealed) {
+          <button mat-raised-button color="primary" (click)="reveal()">
+            Show Meaning
+          </button>
+        } @else {
+          <div class="details">
+            <div class="detail-row">
+              <span>Meaning</span>
+              <strong>{{ currentCard.meaning }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Type</span>
+              <strong>{{ currentCard.type }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Level</span>
+              <strong>{{ currentCard.level }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Category</span>
+              <strong>{{ currentCard.category }}</strong>
+            </div>
+          </div>
+
+          <!-- R4.4.1 starts here -->
+          <div class="review-actions">
+            <button mat-stroked-button color="warn" (click)="review(false)">
+              <mat-icon>close</mat-icon>
+              Didn't Remember
+            </button>
+
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="review(true)"
+              class="remember-btn"
+            >
+              <mat-icon>check</mat-icon>
+              Remembered
+            </button>
+          </div>
+          <!-- End R4.4.1 -->
+        }
+      </mat-card>
+    } @else {
+      <mat-card class="review-card">
+        <h2>No reviews due today 🎉</h2>
+      </mat-card>
+    }
+  </div>
+</div>

@@ -164,3 +164,30 @@
   font-size: 0.8rem;
   font-weight: 600;
 }
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icons button {
+  color: var(--color-text-secondary);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.icons button:hover:not(:disabled) {
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.icons button:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.icons mat-icon {
+  transition: color 0.2s ease;
+}

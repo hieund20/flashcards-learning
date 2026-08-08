@@ -11,16 +11,31 @@
       </div>
     </div>
 
-    <button
-      mat-icon-button
-      (click)="toggleFavorite(); $event.stopPropagation()"
-    >
-      @if (isFavorite()) {
-        <mat-icon>favorite</mat-icon>
-      } @else {
-        <mat-icon>favorite_border</mat-icon>
-      }
-    </button>
+    <div class="icons">
+      <button
+        mat-icon-button
+        (click)="toggleFavorite(); $event.stopPropagation()"
+      >
+        @if (isFavorite()) {
+          <mat-icon>favorite</mat-icon>
+        } @else {
+          <mat-icon>favorite_border</mat-icon>
+        }
+      </button>
+
+      <button
+        mat-icon-button
+        (click)="addToReview(); $event.stopPropagation()"
+        [disabled]="isInReview()"
+        [matTooltip]="isInReview() ? 'Already in Review' : 'Add to Review'"
+      >
+        @if (isInReview()) {
+          <mat-icon>psychology_alt</mat-icon>
+        } @else {
+          <mat-icon>psychology</mat-icon>
+        }
+      </button>
+    </div>
   </div>
 
   <div class="flip-container" (click)="flipCard()">
