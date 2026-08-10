@@ -25,6 +25,13 @@
   transition: opacity 0.2s ease;
 }
 
+.toolbar-title img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 .toolbar-title:hover {
   color: var(--color-primary);
 }

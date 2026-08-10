@@ -1,6 +1,6 @@
 {
-  "name": "english-flashcards-extension",
-  "short_name": "english-flashcards-extension",
+  "name": "Flashcard Learning",
+  "short_name": "Flashcard Learning",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
