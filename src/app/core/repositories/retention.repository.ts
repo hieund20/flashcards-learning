@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Retention } from '../models/retention';
+import { LearningMode } from '../models/learning-mode';
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +23,14 @@ export class RetentionRepository {
     }
   }
 
-  getByFlashCardId(flashCardId: string): Retention | undefined {
+  getByFlashCardId(
+    flashCardId: string,
+    learningMode: LearningMode,
+  ): Retention | undefined {
     return this.getAll().find(
-      (retention) => retention.flashCardId === flashCardId,
+      (retention) =>
+        retention.flashCardId === flashCardId &&
+        retention.learningMode === learningMode,
     );
   }
 
@@ -32,7 +38,9 @@ export class RetentionRepository {
     const retentions = this.getAll();
 
     const index = retentions.findIndex(
-      (retention) => retention.flashCardId === retentionData.flashCardId,
+      (retention) =>
+        retention.flashCardId === retentionData.flashCardId &&
+        retention.learningMode === retentionData.learningMode,
     );
 
     if (index >= 0) {

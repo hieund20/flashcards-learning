@@ -16,6 +16,27 @@
   gap: 24px;
 }
 
+.learning-mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) auto var(--space-md);
+}
+
+.learning-mode-selector button {
+  min-width: 100px;
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+  transition: var(--transition-fast);
+}
+
+.learning-mode-selector button.selected {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
 .navigation {
   display: flex;
 

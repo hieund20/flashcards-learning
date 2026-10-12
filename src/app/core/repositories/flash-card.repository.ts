@@ -3,6 +3,7 @@ import { map, Observable } from 'rxjs';
 
 import { FlashCard } from '../models/flash-card';
 import { GoogleSheetsService } from '../services/google-sheets.service';
+import { LearningMode } from '../models/learning-mode';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,9 @@ import { GoogleSheetsService } from '../services/google-sheets.service';
 export class FlashCardRepository {
   private readonly googleSheetsService = inject(GoogleSheetsService);
 
-  getAll(): Observable<FlashCard[]> {
+  getAll(mode: LearningMode): Observable<FlashCard[]> {
     return this.googleSheetsService
-      .getSheet()
+      .getSheet(mode)
       .pipe(map((response) => this.parseGoogleResponse(response)));
   }
 

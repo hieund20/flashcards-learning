@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { LearningMode } from '../../../../core/models/learning-mode';
 
 @Component({
   selector: 'app-review',
@@ -28,10 +29,14 @@ export class ReviewComponent implements OnInit {
   protected revealed = false;
   protected reviewCompleted = false;
 
-  ngOnInit(): void {
-    const dueIds = new Set(this.retentionService.getDueFlashCardIds());
+  protected learningMode: LearningMode = 'TOEIC';
 
-    this.flashCardService.getAll().subscribe((cards) => {
+  ngOnInit(): void {
+    const dueIds = new Set(
+      this.retentionService.getDueFlashCardIds(this.learningMode),
+    );
+
+    this.flashCardService.getAll(this.learningMode).subscribe((cards) => {
       this.reviewCards = cards.filter((card) => dueIds.has(card.id));
     });
   }
@@ -49,7 +54,11 @@ export class ReviewComponent implements OnInit {
       return;
     }
 
-    this.retentionService.review(this.currentCard.id, correct);
+    this.retentionService.review(
+      this.currentCard.id,
+      this.learningMode,
+      correct,
+    );
 
     this.nextCard();
   }

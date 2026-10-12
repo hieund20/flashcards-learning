@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Retention } from '../models/retention';
 import { RetentionRepository } from '../repositories/retention.repository';
+import { LearningMode } from '../models/learning-mode';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +9,12 @@ import { RetentionRepository } from '../repositories/retention.repository';
 export class RetentionService {
   private readonly repository = inject(RetentionRepository);
 
-  review(flashCardId: string, correct: boolean): void {
-    const retention = this.getRetention(flashCardId);
+  review(
+    flashCardId: string,
+    learningMode: LearningMode,
+    correct: boolean,
+  ): void {
+    const retention = this.getRetention(flashCardId, learningMode);
 
     retention.reviewCount++;
     retention.lastReviewedDate = new Date();
@@ -27,8 +32,11 @@ export class RetentionService {
     this.repository.save(retention);
   }
 
-  getRetention(flashCardId: string): Retention {
-    const retention = this.repository.getByFlashCardId(flashCardId);
+  getRetention(flashCardId: string, learningMode: LearningMode): Retention {
+    const retention = this.repository.getByFlashCardId(
+      flashCardId,
+      learningMode,
+    );
 
     if (retention) {
       return retention;
@@ -36,6 +44,7 @@ export class RetentionService {
 
     const newRetention: Retention = {
       flashCardId,
+      learningMode,
       reviewCount: 0,
       consecutiveCorrect: 0,
       lastReviewedDate: undefined,
@@ -47,12 +56,16 @@ export class RetentionService {
     return newRetention;
   }
 
-  getDueFlashCardIds(): string[] {
+  getDueFlashCardIds(learningMode: LearningMode): string[] {
     const today = new Date();
 
     return this.repository
       .getAll()
-      .filter((retention) => new Date(retention.nextReviewDate) <= today)
+      .filter(
+        (retention) =>
+          retention.learningMode === learningMode &&
+          new Date(retention.nextReviewDate) <= today,
+      )
       .map((retention) => retention.flashCardId);
   }
 
@@ -69,19 +82,15 @@ export class RetentionService {
       case 1:
         days = 1;
         break;
-
       case 2:
         days = 3;
         break;
-
       case 3:
         days = 7;
         break;
-
       case 4:
         days = 14;
         break;
-
       default:
         days = consecutiveCorrect >= 5 ? 30 : 0;
     }
@@ -91,7 +100,9 @@ export class RetentionService {
     return nextReviewDate;
   }
 
-  isInReview(flashCardId: string): boolean {
-    return this.repository.getByFlashCardId(flashCardId) !== undefined;
+  isInReview(flashCardId: string, learningMode: LearningMode): boolean {
+    return (
+      this.repository.getByFlashCardId(flashCardId, learningMode) !== undefined
+    );
   }
 }

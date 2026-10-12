@@ -1,13 +1,20 @@
 <div class="page">
   <div class="container">
+    <div class="learning-mode-selector">
+      @for (mode of learningModes; track mode) {
+        <button
+          mat-stroked-button
+          [class.selected]="learningMode() === mode"
+          (click)="setLearningMode(mode)"
+        >
+          {{ mode }}
+        </button>
+      }
+    </div>
     <app-search-bar (searchChanged)="onSearchChanged($event)"> </app-search-bar>
 
     @if (currentCard(); as card) {
-      <app-flashcard
-        [card]="card"
-        [isFavorite]="favoriteService.isFavorite(card.id)"
-        (favoriteClicked)="toggleFavorite($event)"
-      >
+      <app-flashcard [card]="card" [learningMode]="learningMode()">
       </app-flashcard>
     } @else {
       <div class="empty-state">
