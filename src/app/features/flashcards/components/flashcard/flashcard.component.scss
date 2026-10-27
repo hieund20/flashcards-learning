@@ -9,7 +9,8 @@
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .card-header button {
@@ -20,10 +21,10 @@
 
 .word {
   display: flex;
-
-  align-items: center;
-
+  align-items: flex-start;
   gap: 8px;
+  min-width: 0;
+  flex: 1;
 }
 
 .word mat-icon {
@@ -32,8 +33,9 @@
 
 .word h2 {
   margin: 0;
-  font-size: 2rem;
-  color: var(--color-text-primary);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .card-body {
@@ -111,12 +113,9 @@
 }
 
 .flip-card {
-  position: relative;
-
-  min-height: 180px;
-
+  display: grid;
+  grid-template-areas: "face";
   transform-style: preserve-3d;
-
   transition: transform 0.6s ease;
 }
 
@@ -125,18 +124,15 @@
 }
 
 .card-face {
-  position: absolute;
-
+  grid-area: face;
   width: 100%;
-
-  height: 100%;
-
+  min-width: 0;
+  min-height: 180px;
+  box-sizing: border-box;
+  padding: 16px 0;
   backface-visibility: hidden;
-
   display: flex;
-
   justify-content: center;
-
   flex-direction: column;
 }
 
@@ -148,9 +144,38 @@
   transform: rotateY(180deg);
 }
 
+.meaning,
+.example {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.meaning h3,
+.example p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.meaning h3 {
+  margin-top: 8px;
+  color: var(--color-text-primary);
+}
+
+.example {
+  margin-top: 20px;
+}
+
+.example p {
+  color: var(--color-text-primary);
+  margin-bottom: 0;
+}
+
 .word-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .word-type {
